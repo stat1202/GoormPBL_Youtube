@@ -2,9 +2,10 @@ import React from 'react'
 import { RxHamburgerMenu } from "react-icons/rx";
 import { BsBell, BsCameraVideo, BsFillMicFill, BsPlay, BsPlayFill } from "react-icons/bs"
 import { GoHome, GoHomeFill, GoSearch, GoChevronLeft } from "react-icons/go"
-import { MdOutlineVideoLibrary, MdVideoLibrary, MdOutlineSubscriptions, MdSubscriptions} from "react-icons/md"
+import { MdOutlineVideoLibrary, MdVideoLibrary, MdOutlineSubscriptions, MdSubscriptions, MdInsertComment} from "react-icons/md"
 import {PiDotsThreeVertical} from "react-icons/pi"
-
+import {RiShareForwardFill} from "react-icons/ri"
+import {IoMdThumbsUp,IoMdThumbsDown } from "react-icons/io"
 
 function Icon({type}) {
   return (
@@ -85,13 +86,35 @@ function Icon({type}) {
         <GoChevronLeft size={24}/>
       }
       {
+        type === "share"
+        &&
+        <RiShareForwardFill size={24}/>
+      }
+      {
+        type === "comment"
+        &&
+        <MdInsertComment size={24}/>
+      }
+      {
+        type === "like"
+        &&
+        <IoMdThumbsUp size={24}/>
+      }
+      {
+        type === "dislike"
+        &&
+        <IoMdThumbsDown size={24}/>
+      }
+      {
         type === "profile"
         &&
         <img src={`${process.env.PUBLIC_URL}/profile.jpg`} alt="profile" style={{ width:"32px", height: "32px", borderRadius: "50%", marginLeft: "10px", cursor: "pointer"}}/>
       }
+      
     </React.Fragment>
   )
 }
 
 export default Icon
+
 

@@ -30,6 +30,7 @@ const Iframe = styled.video`
 const VideoBox = styled.div`
   box-sizing: border-box;
   padding-bottom: 20px;
+  min-width: 240px;
   
   &:hover ${CoverImg}{
     opacity: 0;
@@ -125,7 +126,7 @@ function Video() {
     <VideoBox id="video-box" onMouseOver={hoverHandler}>
       <PlayBox>
         <CoverImg src="https://i.ytimg.com/vi/s4Ow55AbdCg/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAC4rYFq17bejjaKRt7Z20GPAHojQ"/>
-        <Iframe src={`${process.env.PUBLIC_URL}/NewJeans (뉴진스) 'ETA' Official MV (Performance ver.).mp4`} controls={false} muted={true} ref={videoRef}/>
+        <Iframe src={`${process.env.PUBLIC_URL}/videos/NewJeans (뉴진스) 'ETA' Official MV (Performance ver.).mp4`} controls={false} muted={true} ref={videoRef}/>
       </PlayBox>
       <DetailBox>
         <ChannelProfile src={`${process.env.PUBLIC_URL}/new_jeans.jpg`}/>

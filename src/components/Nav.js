@@ -1,7 +1,7 @@
 import React from 'react'
 import { styled } from 'styled-components'
 import Icon from './common/Icon'
-import { Link } from 'react-router-dom'
+import { NavLink, useLocation } from 'react-router-dom'
 const NavStyle = styled.nav`
   position: fixed;
   box-sizing: border-box;
@@ -12,7 +12,7 @@ const NavStyle = styled.nav`
   height: 100vh;
 `
 
-const MenuLink = styled(Link)`
+const MenuLink = styled(NavLink)`
   display: flex;
   flex-direction: column;
   padding: 16px 18px;
@@ -32,22 +32,50 @@ const MenuSpan = styled.span`
 `
 
 function Nav() {
+  const pathname = useLocation().pathname
+  console.log(pathname)
+
   return (
     <NavStyle>
       <MenuLink to="/">
-        <Icon type="home"/>
+        {
+          pathname === "/"
+          ?
+          <Icon type="home-fill"/>
+          :
+          <Icon type="home"/>          
+        }
         <MenuSpan>홈</MenuSpan>
       </MenuLink>
       <MenuLink to="/shorts">
-        <Icon type="shorts"/>
+        {
+          pathname.includes('shorts')
+          ?
+          
+          <Icon type="shorts-fill"/>
+          :
+          <Icon type="shorts"/>
+        }
         <MenuSpan>Shorts</MenuSpan>
       </MenuLink>
       <MenuLink to="/feed/subscriptions">
-        <Icon type="subscriptions"/>
+        {
+          pathname.includes('subscriptions')
+          ?
+          <Icon type="subscriptions-fill"/>
+          :
+          <Icon type="subscriptions"/>
+        }
         <MenuSpan>구독</MenuSpan>
       </MenuLink>
       <MenuLink to="/feed/library">
-        <Icon type="library"/>
+        {
+          pathname.includes('library')
+          ?
+          <Icon type="library-fill"/>
+          :
+          <Icon type="library"/>
+        }
         <MenuSpan>보관함</MenuSpan>
       </MenuLink>
     </NavStyle>
