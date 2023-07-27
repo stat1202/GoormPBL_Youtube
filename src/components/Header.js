@@ -1,12 +1,14 @@
 import React from 'react'
-import { SiYoutubetv } from "react-icons/si"
 import { styled } from 'styled-components'
 import Icon from './common/Icon'
+import { useNavigate } from 'react-router-dom'
+import { useSetRecoilState } from 'recoil'
+import { isMenuOpenState } from '../recoil/recoilState'
 
 const HeaderStyle = styled.header`
   position: fixed;
   box-sizing: border-box;
-  padding: 0 24px;
+  padding: 0 16px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -91,11 +93,16 @@ const IconDiv = styled.div`
 
 
 function Header() {
+  const navigate = useNavigate()
+  const setIsMenuOpen = useSetRecoilState(isMenuOpenState)
+
   return (
     <HeaderStyle>
       <Div>
-        <Icon type="hamburger"/>
-        <img src={`${process.env.PUBLIC_URL}/logo.png`} style={{ height:"30px", padding: "13px", cursor: "pointer"}} alt="logo"/>
+        <IconDiv onClick={() => setIsMenuOpen(true)}>
+          <Icon type="hamburger" />
+        </IconDiv>
+        <img onClick={() => navigate('/')} src={`${process.env.PUBLIC_URL}/logo.png`} style={{ height:"30px", padding: "13px", cursor: "pointer"}} alt="logo"/>
       </Div>
       <Form>
         <InputDiv>

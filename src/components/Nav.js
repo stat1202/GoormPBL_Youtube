@@ -2,6 +2,7 @@ import React from 'react'
 import { styled } from 'styled-components'
 import Icon from './common/Icon'
 import { NavLink, useLocation } from 'react-router-dom'
+
 const NavStyle = styled.nav`
   position: fixed;
   box-sizing: border-box;
@@ -33,8 +34,7 @@ const MenuSpan = styled.span`
 
 function Nav() {
   const pathname = useLocation().pathname
-  console.log(pathname)
-
+  // console.log(pathname)
   return (
     <NavStyle>
       <MenuLink to="/">

@@ -1,11 +1,15 @@
 import React from 'react'
 import { RxHamburgerMenu } from "react-icons/rx";
 import { BsBell, BsCameraVideo, BsFillMicFill, BsPlay, BsPlayFill } from "react-icons/bs"
-import { GoHome, GoHomeFill, GoSearch, GoChevronLeft } from "react-icons/go"
+import { GoHome, GoHomeFill, GoSearch, GoChevronLeft, GoClock } from "react-icons/go"
 import { MdOutlineVideoLibrary, MdVideoLibrary, MdOutlineSubscriptions, MdSubscriptions, MdInsertComment} from "react-icons/md"
-import {PiDotsThreeVertical} from "react-icons/pi"
+import { PiShareFatThin, PiDotsThreeVertical, PiClockCounterClockwiseLight, PiPlaylist, PiShuffleLight} from "react-icons/pi"
 import {RiShareForwardFill} from "react-icons/ri"
-import {IoMdThumbsUp,IoMdThumbsDown } from "react-icons/io"
+import {IoMdThumbsUp,IoMdThumbsDown, IoIosList, IoIosPlay } from "react-icons/io"
+import { BiGridHorizontal,} from "react-icons/bi"
+import { AiOutlineDislike, AiOutlineLike } from "react-icons/ai"
+import { BsFilterLeft } from "react-icons/bs"
+import { HiBars2 } from "react-icons/hi2"
 
 function Icon({type}) {
   return (
@@ -91,6 +95,12 @@ function Icon({type}) {
         <RiShareForwardFill size={24}/>
       }
       {
+        type === "share-empty"
+        &&
+        <PiShareFatThin size={24}/>
+      }
+      
+      {
         type === "comment"
         &&
         <MdInsertComment size={24}/>
@@ -101,10 +111,67 @@ function Icon({type}) {
         <IoMdThumbsUp size={24}/>
       }
       {
+        type === "like-empty"
+        &&
+        <AiOutlineLike size={24}/>
+      }
+      {
         type === "dislike"
         &&
         <IoMdThumbsDown size={24}/>
       }
+      {
+        type === "dislike-empty"
+        &&
+        <AiOutlineDislike size={24}/>
+      }
+      
+      {
+        type === "list"
+        &&
+        <IoIosList size={24}/>
+      }
+      {
+        type === "grid"
+        &&
+        <BiGridHorizontal size={24}/>
+      }
+      {
+        type === "clock"
+        &&
+        <GoClock size={24}/>
+      }
+      {
+        type === "log"
+        &&
+        <PiClockCounterClockwiseLight size={24}/>
+      }
+      {
+        type === "playlist"
+        &&
+        <PiPlaylist size={24}/>
+      }
+      {
+        type === "shuffle"
+        &&
+        <PiShuffleLight size={24}/>
+      }
+      {
+        type === "playsharp"
+        &&
+        <IoIosPlay size={24}/>
+      }
+      {
+        type === "filter"
+        &&
+        <BsFilterLeft size={24}/>
+      }
+      {
+        type === "double"
+        &&
+        <HiBars2 size={20}/>
+      }
+      
       {
         type === "profile"
         &&
