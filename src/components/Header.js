@@ -8,7 +8,7 @@ import { isMenuOpenState } from '../recoil/recoilState'
 const HeaderStyle = styled.header`
   position: fixed;
   box-sizing: border-box;
-  padding: 0 16px;
+  padding: 0 16px 0 8px;
   display: flex;
   justify-content: space-between;
   align-items: center;

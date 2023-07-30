@@ -120,7 +120,34 @@ const SettingsDiv = styled.div`
     background-color: rgba(0,0,0,0.05);
   }
 
-  
+`
+
+const SettingMenu = styled.div`
+  width: 100px;
+  position: absolute;
+  right: 3px;
+  top: 38px;
+  background-color: #fff;
+  box-shadow: -3px 3px 10px rgba(0,0,0,0.15); 
+  border-radius: 5px;
+
+  transition: 0.3s;
+  opacity: ${props => props.isMenuOpen ? "1": "0"};
+  visibility: ${props => props.isMenuOpen ? "visible": "hidden"};
+  height: ${props => props.isMenuOpen ? "34px": "0"};
+
+
+`
+const IconDiv = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  padding: 5px 15px;
+  border-radius: 5px;
+  z-index: 10;
+  &:hover{
+    background-color: rgba(0,0,0,0.05);
+  }
 `
 
 function Video({type}) {
@@ -131,13 +158,13 @@ function Video({type}) {
   }
   const navigate = useNavigate()
 
-  const clickHandler = () => {
+  const clickHandler = (e) => {
     navigate('/watch')
   }
-
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
   return (
-    <VideoBox id="video-box" onMouseOver={hoverHandler} type={type} onClick={clickHandler}>
-      <PlayBox>
+    <VideoBox id="video-box" onMouseOver={hoverHandler} type={type}>
+      <PlayBox onClick={clickHandler}>
         <CoverImg src="https://i.ytimg.com/vi/s4Ow55AbdCg/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAC4rYFq17bejjaKRt7Z20GPAHojQ"/>
         <Iframe src={`${process.env.PUBLIC_URL}/videos/NewJeans (뉴진스) 'ETA' Official MV (Performance ver.).mp4`} controls={false} muted={true} ref={videoRef}/>
       </PlayBox>
@@ -148,9 +175,12 @@ function Video({type}) {
           <SubDetail>HYBE LABELS</SubDetail>
           <SubDetail>조회수 214만회 <b>·</b> 1일 전</SubDetail>
         </Description>
-        <SettingsDiv>
+        <SettingsDiv onClick={() => setIsMenuOpen(!isMenuOpen)}>
           <Icon type="settings"/>
-        </SettingsDiv>      
+        </SettingsDiv>
+        <SettingMenu isMenuOpen={isMenuOpen}>
+          <IconDiv><Icon type="share-empty"/> 공유</IconDiv>
+        </SettingMenu>      
       </DetailBox>
     </VideoBox>
   )
